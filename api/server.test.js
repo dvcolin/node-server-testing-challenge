@@ -26,5 +26,15 @@ describe('server.js', () => {
                 expect(response.type).toEqual(expectedResponseType);
             })
         })
+    });
+
+    describe('tracks route', () => {
+        it('should be able to post tracks', () => {
+            server.post('/tracks', (req, res) => {
+                const trackBody = { name: "Track Name", artist: "Track Artist" };
+
+                
+            })
+        })
     })
 })
