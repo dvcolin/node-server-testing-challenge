@@ -19,7 +19,12 @@ function getById(id) {
     .where({ id })
     .first()
     .then(res => {
-        return res;
+        if (res) {
+            return res;
+        } else {
+            return { error: 'Track already deleted!' };
+        }
+
     })
 }
 

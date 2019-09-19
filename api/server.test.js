@@ -73,6 +73,20 @@ describe('server.js', () => {
                 tracks = await db('tracks');
                 expect(tracks).toHaveLength(1);
             
+            });
+
+            it('should delete the track with the specified id', async () => {
+                await Tracks.insert({ "track_name": "Tripolar Dub", "track_artist": "Akeos" })
+                await Tracks.insert({ "track_name": "Wonton Bass", "track_artist": "Aweminus" })
+    
+                let tracks = await db('tracks');
+                expect(tracks).toHaveLength(2);
+
+                await Tracks.remove(2)
+
+                const response = await Tracks.getById(2)
+
+                expect(response).toEqual({ error: 'Track already deleted!' });
             })
         })
     });
