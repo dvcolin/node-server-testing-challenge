@@ -13,6 +13,18 @@ describe('server.js', () => {
 
                 expect(response.status).toEqual(expectedStatusCode);
             })
+        });
+
+        it('should return a JSON object', () => {
+            const expectedResponseType = 'application/json';
+
+            let response;
+            return request(server).get('/')
+            .then(res => {
+                response = res;
+
+                expect(response.type).toEqual(expectedResponseType);
+            })
         })
     })
 })
