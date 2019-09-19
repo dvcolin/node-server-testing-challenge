@@ -28,7 +28,7 @@ function insert(track) {
     .insert(track)
     .then(ids => {
         const [id] = ids;
-        return id;
+        return getById(id)
     })
 }
 
@@ -36,7 +36,4 @@ function remove(id) {
     return db('tracks')
     .delete()
     .where({ id })
-    .then(res => {
-        return res;
-    })
 }
